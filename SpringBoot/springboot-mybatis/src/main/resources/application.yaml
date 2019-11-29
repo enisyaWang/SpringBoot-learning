@@ -1,0 +1,41 @@
+spring:
+  datasource:
+    username: root
+    password: root
+    url: jdbc:mysql://172.16.145.137:3306/springboot
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    initialization-mode: always
+    type: com.alibaba.druid.pool.DruidDataSource
+    druid:
+      # \u8FDE\u63A5\u6C60\u914D\u7F6E
+      # \u914D\u7F6E\u521D\u59CB\u5316\u5927\u5C0F\u3001\u6700\u5C0F\u3001\u6700\u5927
+      initial-size: 1
+      min-idle: 1
+      max-active: 20
+      # \u914D\u7F6E\u83B7\u53D6\u8FDE\u63A5\u7B49\u5F85\u8D85\u65F6\u7684\u65F6\u95F4
+      max-wait: 3000
+      validation-query: SELECT 1 FROM DUAL
+      test-on-borrow: false
+      test-on-return: false
+      test-while-idle: true
+      pool-prepared-statements: true
+      time-between-eviction-runs-millis: 60000
+      min-evictable-idle-time-millis: 300000
+      filters: stat,wall,slf4j
+      # \u914D\u7F6Eweb\u76D1\u63A7,\u9ED8\u8BA4\u914D\u7F6E\u4E5F\u548C\u4E0B\u9762\u76F8\u540C(\u9664\u7528\u6237\u540D\u5BC6\u7801\uFF0Cenabled\u9ED8\u8BA4false\u5916)\uFF0C\u5176\u4ED6\u53EF\u4EE5\u4E0D\u914D
+      web-stat-filter:
+        enabled: true
+        url-pattern: /*
+        exclusions: "*.js,*.gif,*.jpg,*.png,*.css,*.ico,/druid/*"
+      stat-view-servlet:
+        enabled: true
+        url-pattern: /druid/*
+        login-username: admin
+        login-password: root
+        allow: 127.0.0.1
+    schema:
+      - classpath:department.sql
+      - classpath:employee.sql
+mybatis:
+  config-location: classpath:mybatis/mybatis-config.xml
+  mapper-locations: classpath:mybatis/mapper/*.xml

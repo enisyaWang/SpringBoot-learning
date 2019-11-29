@@ -1,0 +1,14 @@
+person:
+  name: 张三
+  gender: 男
+  age: 36
+  boss: true
+  birth: 1982/10/1
+  maps: {k1: v1,k2: v2}
+  lists:
+    - apple
+    - peach
+    - banana
+  pet:
+    name: 小狗
+    age: 12
