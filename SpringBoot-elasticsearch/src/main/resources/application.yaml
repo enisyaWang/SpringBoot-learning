@@ -1,0 +1,5 @@
+spring:
+  elasticsearch:
+    rest:
+      uris:
+        - 172.16.145.141:9200
